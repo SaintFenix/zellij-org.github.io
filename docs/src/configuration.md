@@ -1,45 +1,40 @@
 # Configuration
 
-Zellij will look for a file `config.yaml` in the default configuration location of your os:
+By default Zellij will look for `config.yaml` in the `config` directory.
 
-**Linux**: `/home/alice/.config/zellij`
-
-**Mac**: `/Users/Alice/Library/Application Support/org.Zellij-Contributors.Zellij`
-
-To ignore the default config file location:
-
+Quickstart:
 ```
-zellij config --clean
+mkdir ~/.config/zellij
+zellij setup --dump-config > ~/.config/zellij/config.yaml
 ```
 
-To pass a config file directly to zellij:
+The default `config` directory order is as follows:
 
-```
-zellij config [FILE]
-```
+- `--config-dir` flag
+- `ZELLIJ_CONFIG_DIR` env variable
+- `$HOME/.config/zellij`
+- default location
+    - Linux: `/home/alice/.config/zellij`
+    - Mac: `/Users/Alice/Library/Application Support/org.Zellij-Contributors.Zellij`
 
+- system location (`/etc/zellij`)
 
-## Current Main:
-
-This changed in the current main branch.
-
-To ignore the default config file location:
-
-```
-zellij option --clean
-```
-
-To pass a config file directly to zellij:
+In order to  pass a config file directly to zellij:
 
 ```
 zellij --config [FILE]
 ```
 
-Or use the `ZELLIJ_CONFIG` environment variable,
-in order to pass the location.
+or use the `ZELLIJ_CONFIG_FILE` environment variable.
 
-The config order is as follows:
 
-1. `--config` flag
-2. `ZELLIJ_CONFIG` variable
-3. default location
+To start without loading configuration from default directories:
+
+```
+zellij options --clean
+```
+
+To show the current default configuration:
+```
+zellij setup --dump-config
+```
